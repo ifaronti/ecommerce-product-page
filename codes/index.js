@@ -1,6 +1,10 @@
 const thumbnailz = [...document.querySelectorAll('.thumbnailz')]
 const lightThumb = document.querySelector('.thumblist')
+const imgButtons = document.querySelector('.imgBtns')
 const large = document.getElementById('largeImg')
+let lightBox = document.querySelector('.lightBox')
+let nextBtn = document.querySelector('.nextBtn')
+let prevBtn = document.querySelector('.previousBtn')
 
 thumbnailz.map(thumbnail =>{
     thumbnail.onclick = () =>{
@@ -15,13 +19,14 @@ thumbnailz.map(thumbnail =>{
     }
 })
 
-// **********************************Light Box **********************
-let lightBox = document.querySelector('.lightBox')
+nextBtn.onclick = () => {
+}
 
 large.onclick = () => {
     lightBox.dataset.boolean = "true"
     large.classList.add('largeImg')
     lightThumb.classList.add('centerThumb')
+    imgButtons.style.display = 'flex'
     return
 }
 
