@@ -1,30 +1,37 @@
+@font-face {
+    font-family: 'Kumbh Sans';
+    src: url(font/KumbhSans-Regular.ttf);
+}
 
+@font-face {
+    font-family: 'Kumbh Sans Light';
+    src: url(font/KumbhSans-Light.ttf);
+}
 
-:root{
+@font-face {
+    font-family: 'Kumbh Sans Bold';
+    src: url(font/KumbhSans-SemiBold.ttf);
+}
+
+body{
     display: flex;
     justify-content: center;
-    background-color: whitesmoke;
+    background-color: white;
     font-family: 'Kumbh Sans';
+    align-items: center;
 }
 
 /* *************** nav section ****************/
 
 .page_wrap{
     position: relative;
-    top: 2rem;
     width: 1440px;
-    height: auto;
-    background-color: white;
+    align-self: center;
+    justify-self: center;
+    height: 96vh;
 }
 
 @media only screen and (max-width: 960px) {
-    :root{
-        display: flex;
-        justify-content: center;
-        background-color: rgb(159, 157, 157);
-        font-family: 'Kumbh Sans';
-    }
-
     .page_wrap{
         display: flex;
         justify-content: center;
@@ -178,9 +185,34 @@
 }
 
  /* ************** main section imgages **************** */
+ .main_contents{
+    position: relative;
+    top: 2.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
 
 .image_container{
-    position: absolute;
+    position: relative;
+}
+
+/* .large1{
+    display: none;
+    width: 550px;
+    height: 550px;
+    align-self: center;
+} */
+
+.lightThumbList{
+    display: none;
+    z-index: 40;
+}
+
+.lightThumbs{
+    width: 94px;
+    border-radius: 10px;
+    display: none;
 }
 
 .thumblist{
@@ -191,12 +223,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 200px;
-    column-gap: 2rem;
+    column-gap: 1.4rem;
+}
+
+.thumblist li{
+    width: 6rem;
 }
 
 .thumbnailz{
-    width: 5rem;
+    width: 94px;
     border-radius: 10px;
+    display: block;
 }
 
 .thumbnailz:hover{
@@ -206,9 +243,61 @@
 
 .larges{
     position: absolute;
-    width: 26rem;
+    width: 446px;
     height: 29rem;
     border-radius: 1rem;
+    top: 12rem;
+    left: 12.6rem;
+    display: block;
+    z-index: 40;
+}
+
+.larges:hover{
+    cursor: pointer;
+}
+
+.larges{
+    position: absolute;
+}
+
+.activeThumb{
+    opacity: .4;
+    border: 3px solid hsl(26, 100%, 55%);
+}
+
+.lightBox{
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .5;
+    z-index: 30;
+    display: none;
+}
+
+.lightBox[data-boolean="true"]{
+    display: block;
+}
+
+.largeImg{
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 6rem;
+    align-self: center;
+    width: 550px;
+    height: 550px;
+    align-self: center;
+}
+
+.centerThumb{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    z-index: 50;
+    position: relative;
+    top: 7rem;
+    left: 0;
 }
 
 @media only screen and (max-width: 960px){
@@ -243,65 +332,8 @@
     }
 }
 
-.larges:hover{
-    cursor: pointer;
-}
-
-.large1{
-    position: absolute;
-    top: 12rem;
-    display: block;
-    left: 12.6rem;
-}
-
-.large2{
-    position: absolute;
-    top: 12rem;
-    display: block;
-    left: 12.6rem;
-}
-
-.large3{
-    position: absolute;
-    top: 12rem;
-    display: block;
-    left: 12.6rem;
-    display: block;
-}
-
-.large4{
-    position: absolute;
-    top: 12rem;
-    display: block;
-    left: 12.6rem;
-    display: block;
-}
-
-.mobile_image{
-    display: none;
-}
 
 @media only screen and (max-width: 960px){
-    .large4{
-   display: none;
-    }
-
-    .large3{
-        display: none;
-    }
-
-    .large2{
-       display: none;
-    }
-
-    .large1{
-      display: none;
-    }
-
-    .mobile_image{
-        display: block;
-    }
-
     .molarge1{
     width: 23.45rem;
     height: 18rem;
@@ -334,126 +366,6 @@
     top: 4rem;
     left: 0rem;
     }
-}
-
-/* ******************************** lightbox section ********************* */
-
-.lightboxing{
-    z-index: 2;
-    width: 1440px;
-    height: 900px;
-    position: relative;
-    background: rgba(0, 0, 0, 0.3);
-    display: none;
-}
-
-.largesb{
-    position: absolute;
-    width: 34rem;
-    height: 34rem;
-    border-radius: 1rem;
-}
-
-.large1b{
-    position: absolute;
-    top: 9rem;
-    display: none;
-    left: 30rem;
-}
-.large2b{
-    position: absolute;
-    top: 9rem;
-    display: none;
-    left: 30rem;
-}
-.large3b{
-    position: absolute;
-    top: 9rem;
-    display: none;
-    left: 30rem;
-}
-.large4b{
-    position: absolute;
-    top: 9rem;
-    display: none;
-    left: 30rem;
-}
-
-.thumblistb{
-    position: absolute;
-    top: 44rem;
-    left: 31.6rem;
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 200px;
-    column-gap: 2rem;
-}
-
-.largesb:hover{
-    cursor: pointer;
-}
-
-.thumbnailzb{
-    width: 5rem;
-    border-radius: 10px;
-}
-
-.thumbnailzb:hover{
-    cursor: pointer;
-    opacity: .4;
-}
-
-.nextbtn{
-    position: absolute ;
-    top: 24rem;
-    left: 62.3rem;
-    background-color: white;
-    height: 3.5rem;
-    width: 3.5rem;
-    border-radius: 100%;
-    display: none;
-} 
-
-
-.nexty:hover{
-    cursor: pointer;
-    stroke: hsl(26, 100%, 55%);
-}
-.nextbtn:hover{
-    cursor: pointer;
-}
-
-.previousbtn{
-    position: absolute ;
-    top: 24rem;
-    left: 28.3rem;
-    background-color: #ffffff;
-    border-radius: 100%; 
-    height: 3.5rem;
-    width: 3.5rem;
-    display: none;
-}
-
-.prevy:hover{
-    cursor: pointer;
-    stroke: hsl(26, 100%, 55%);
-}
-
-
-
-.closebtn{
-    position: absolute ;
-    top: 6.1rem;
-    left: 62.3rem;
-    width: 8.5rem;
-    height: 8.5rem;
-}
-
-.clozer:hover{
-    cursor: pointer;
-    fill: hsl(26, 100%, 55%);
-    font-size: 2rem;
 }
 
 /* ******************** nav/cart area  **************** */
@@ -494,6 +406,7 @@
     background-color: white;
     border-radius: 5px;
     display: none;
+    box-shadow: 0 0 5px 2px rgb(206, 205, 205);
 }
 
 @media only screen and (max-width: 960px){
@@ -598,7 +511,7 @@
     justify-content: right;
     position: absolute;
     top: 15rem;
-    right: 13rem;
+    right: 11.5rem;
 }
 .p1{
     color: hsl(26, 100%, 55%);
@@ -608,14 +521,18 @@
 
 .p2{
     font-size: 3rem;
-    font-weight: bolder;
+    font-weight: 700;
     margin-top: 1rem;
+    font-family: 'Kumbh Sans Bold';
 }
 
 .p3{
-    color: hsl(0, 1%, 65%);
+    color: hsl(219, 9%, 45%);
+    width: 500px;
     letter-spacing: 1px;
-    margin-top: -.8rem;
+    line-height: 30px;
+    margin-top: -1.5rem;
+    font-family: 'Kumbh Sans Light';
 }
 
 .p4{
@@ -640,7 +557,7 @@
 
 .p6{
     margin-top: -4rem;
-    color: #acacac;
+    color: hsl(220, 14%, 75%);
     text-decoration: line-through;
     font-size: 1.1rem;
     font-weight: 500;
@@ -697,6 +614,7 @@
     position: relative;
     top: -1.3rem;
     right: -3rem;
+    z-index: 5;
 }
 
 .plus_btn:hover{
@@ -806,6 +724,39 @@
         position: absolute;
         top: 18.5rem;
     }
+}
+
+/************************ lightbox section  **************************/
+.nextbtn{
+    background-color: white;
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 100%;   
+} 
+
+
+.nexty:hover{
+    cursor: pointer;
+    stroke: hsl(26, 100%, 55%);
+}
+.nextbtn:hover{
+    cursor: pointer;
+}
+
+.previousbtn{
+    position: absolute ;
+    top: 24rem;
+    left: 28.3rem;
+    background-color: #ffffff;
+    border-radius: 100%; 
+    height: 3.5rem;
+    width: 3.5rem;
+   
+}
+
+.prevy:hover{
+    cursor: pointer;
+    stroke: hsl(26, 100%, 55%);
 }
 
 /* ********************** mobile image section ******************** */

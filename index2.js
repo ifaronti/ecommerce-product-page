@@ -1,6 +1,5 @@
 const thumbnailz = [...document.querySelectorAll('.thumbnailz')]
-const lightThumb = document.querySelector('.thumblist')
-const large = document.getElementById('largeImg')
+const large = document.getElementById('large')
 
 thumbnailz.map(thumbnail =>{
     thumbnail.onclick = () =>{
@@ -15,15 +14,6 @@ thumbnailz.map(thumbnail =>{
     }
 })
 
-// **********************************Light Box **********************
-let lightBox = document.querySelector('.lightBox')
-
-large.onclick = () => {
-    lightBox.dataset.boolean = "true"
-    large.classList.add('largeImg')
-    lightThumb.classList.add('centerThumb')
-    return
-}
 
 // ******************  carting variables ********************
 let plusBtn = document.querySelector(".plus_btn")
@@ -43,11 +33,19 @@ let cartSum = document.querySelector(".bolden_sum")
 let addedQ = ''
 checkOutBtn = document.querySelector('.checkoutbtn')
 delItem = document.querySelector('.checkout_deletebtn')
+trueQl = window.matchMedia("(max-width: 960px)")
+
+
 
 // ******************** mobile variables **************88
 
-let menu = document.querySelector('#mobile-menu')
-let menuLinks = document.querySelector('.navbar_menu')
+let moNextBtn = document.querySelector('.mobile_next')
+let moprevBtn = document.querySelector('.mobile_prev')
+
+// ******************** lightbox variables ******************
+
+let nextBtn = document.querySelector(".nextbtn")
+let prevBtn = document.querySelector(".previousbtn")
 
 // ******************** mobile dropdown menu function *****************8
 
@@ -56,33 +54,44 @@ menu.addEventListener('click', function(){
     menuLinks.classList.toggle('active')
 })
 
-
 // ************************************ cart functions ************************************
 
-plusBtn.onclick = () => quantity.innerHTML = Number(quantity.innerText) + 1
-
-minusBtn.addEventListener('click', ()=>{
-    quantity.innerHTML == 0 ? '': quantity.innerHTML = Number(quantity.innerHTML) - 1
+plusBtn.addEventListener('click', function(){
+    let addedQuantity = 0
+    quantity.innerHTML = addedQuantity+1
 })
 
-add2Cart.addEventListener('click', ()=>{
+minusBtn.addEventListener('click', function(){
+    let addedQuantity = 0
+    if(quantity.innerHTML == 0){
+        quantity.innerHTML = 0
+    }
+    else{
+        quantity.innerHTML = Number(quantity.innerText) - 1
+    }
+})
+
+add2Cart.addEventListener('click', function(){
     if (quantity.innerHTML == 0){
         zeroError.style.display = 'block'
         itemCount.style.display = 'none'
     }
     else{
         addedQ = quantity.innerHTML
+        itemCount.style.display = 'block'
+        itemCount.innerHTML = `${addedQ}`
         zeroError.style.display = 'none'
-        localStorage.setItem('quantity', addedQ) 
+        localStorage.setItem('quantity', addedQ)
+        
     }
     location.reload()
 })
 
 let flawts = localStorage.getItem('quantity') 
 
-const cartLogic = () =>{
+shoppingCart.addEventListener('mouseover', function(){
     checkCart.style.display = 'block'
-    if( flawts){
+    if(( flawts != 0) && (flawts != null)){
         cartP2.style.display = 'none'
         checkCartItems.style.display = 'block'
         if(flawts > 1){
@@ -94,46 +103,66 @@ const cartLogic = () =>{
             if (flawts = 1){
                 cartP4.innerHTML = `$125`
                 cartP2.style.display = 'none'
-                return
             }
         }
     }
-}
+})
 
-shoppingCart.onmouseover =  cartLogic
+checkCart.addEventListener('mouseover', function(){
+    checkCart.style.display = 'block'
+})
+checkCart.addEventListener('mouseout', function(){
+    checkCart.style.display = 'none'
+})
 
-checkCart.onmouseover = () => checkCart.style.display = 'block'
-closeCart.onclick = () => checkCart.style.display = 'none'
 
-
-if (flawts){
+if (( flawts != 0) && (flawts != null)){
     itemCount.style.display = 'block'
     itemCount.innerHTML = `${flawts}`
 }
 
-const emptyCart = ()=>{
+checkOutBtn.addEventListener('click', function(){
     localStorage.clear()
     itemCount.style.display = 'none'
     checkCartItems.style.display = 'none'
     cartP2.style.display = 'block'
-}
 
-checkOutBtn.onclick = emptyCart
+})
 
-const deleteItem = ()=>{
-    if(itemCount.innerHTML == 1){
-        emptyCart()
+delItem.addEventListener('click', function(){
+    if (itemCount.innerHTML == 1){
+        localStorage.clear()
+        cartP2.style.display = 'block'
+        checkCartItems.style.display = 'none'
+        itemCount.style.display = 'none'
         location.reload()
-        return
     }
-        
-    if (flawts >= 2){
-        itemCount.innerHTML = `${Number(itemCount.innerHTML) - 1}`
-        cartP4.innerHTML = `$125 x ${itemCount.innerHTML}:`
-        cartSum.innerHTML = `$${Number(125) * Number(itemCount.innerHTML)}`
-        localStorage.setItem('quantity', itemCount.innerHTML)
-        return
-    }
-}
+    else{
+        if (itemCount.innerHTML <= 2){
+            itemCount.innerText = Number(itemCount.innerHTML) - Number(1)
+            cartP4.innerHTML = `$125`
+            cartSum.style.display = 'none'
+            localStorage.setItem('quantity', itemCount.innerHTML)
+        }
+        else{
+            if (flawts >= 2){
+                itemCount.innerHTML = `${Number(itemCount.innerHTML) - Number(1)}`
+                cartP4.innerHTML = `$125 x ${itemCount.innerHTML}:`
+                cartSum.innerHTML = `$${Number(125) * Number(itemCount.innerHTML)}`
+                localStorage.setItem('quantity', itemCount.innerHTML)
+            }
+        }
 
-delItem.addEventListener('click', deleteItem)
+    }
+})
+
+closeCart.addEventListener('click', ()=>{
+    checkCart.style.display = 'none'
+})
+
+moNextBtn.addEventListener('click', ()=>{
+
+})
+
+moprevBtn.addEventListener('click', ()=>{
+})
