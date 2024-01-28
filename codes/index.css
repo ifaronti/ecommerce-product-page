@@ -263,7 +263,7 @@ justify-content: center;
     min-height: 100%;
     width: 100%;
     background-color: black;
-    opacity: .5;
+    opacity: .8;
     z-index: 30;
     display: none;
 }
@@ -344,6 +344,24 @@ justify-content: center;
 
 .previousBtn:hover .prevStroke{
     stroke: orange;
+}
+
+.closeLightBox{
+    position:absolute;
+    top: 6rem;
+    margin-left: 32rem;
+    justify-self: right;
+    align-self: right;
+    fill: orange;
+    z-index: 200;
+    display: none;
+}
+
+.closeLightBox:hover .closeFill{
+    fill: orange;
+    stroke: rgb(223, 145, 0);
+    fill-rule: evenodd;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 960px){

@@ -5,31 +5,67 @@ const large = document.getElementById('largeImg')
 let lightBox = document.querySelector('.lightBox')
 let nextBtn = document.querySelector('.nextBtn')
 let prevBtn = document.querySelector('.previousBtn')
+let closeBoxBtn= document.querySelector('.closeLightBox')
+
+allLinks = thumbnailz.map(thumbnail => thumbnail.alt)
+console.log(thumbnailz[3])
+
 
 thumbnailz.map(thumbnail =>{
     thumbnail.onclick = () =>{
         large.src = `./images/${thumbnail.alt}.jpg`
-        thumbnail.classList.add('activeThumb')
 
         thumbnailz.map(thumb =>{
             return thumb !== thumbnail ? thumb.classList.remove('activeThumb')
             :
-            ''
+            thumbnail.classList.add('activeThumb')
         })
     }
 })
 
-nextBtn.onclick = () => {
+let i = 0
+
+const nextImg = ()=>{
+    i++
+    if(i > 3){
+        i = 0
+    }
+    large.src =  `./images/${allLinks[i]}.jpg`
+    thumbnailz.map(thumbnail => {
+    thumbnail !== thumbnailz[i] ? thumbnail.classList.remove('activeThumb'): thumbnail.classList.add('activeThumb')
+    })
 }
+
+const prevImg = ()=>{
+    i--
+    if(i < 0){
+        i = 3
+    }
+    large.src =  `./images/${allLinks[i]}.jpg`
+    thumbnailz.map(thumbnail => {
+    thumbnail !== thumbnailz[i] ? thumbnail.classList.remove('activeThumb'): thumbnail.classList.add('activeThumb')
+    })
+}
+
+prevBtn.onclick = prevImg
+nextBtn.onclick = nextImg
+
 
 large.onclick = () => {
     lightBox.dataset.boolean = "true"
     large.classList.add('largeImg')
     lightThumb.classList.add('centerThumb')
     imgButtons.style.display = 'flex'
-    return
+    closeBoxBtn.style.display = 'block'
 }
 
+closeBoxBtn.onclick = () => {
+    lightBox.dataset.boolean = "false"
+    large.classList.remove('largeImg')
+    lightThumb.classList.remove('centerThumb')
+    imgButtons.style.display = 'none'
+    closeBoxBtn.style.display = 'none'
+}
 // ******************  carting variables ********************
 let plusBtn = document.querySelector(".plus_btn")
 let minusBtn = document.querySelector(".minus_btn")
