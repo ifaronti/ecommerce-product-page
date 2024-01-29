@@ -8,8 +8,6 @@ let prevBtn = document.querySelector('.previousBtn')
 let closeBoxBtn= document.querySelector('.closeLightBox')
 
 allLinks = thumbnailz.map(thumbnail => thumbnail.alt)
-console.log(thumbnailz[3])
-
 
 thumbnailz.map(thumbnail =>{
     thumbnail.onclick = () =>{
@@ -27,7 +25,7 @@ let i = 0
 
 const nextImg = ()=>{
     i++
-    if(i > 3){
+    if(i > allLinks.length - 1){
         i = 0
     }
     large.src =  `./images/${allLinks[i]}.jpg`
@@ -95,6 +93,7 @@ let menuLinks = document.querySelector('.navbar_menu')
 menu.addEventListener('click', function(){
     menu.classList.toggle('is-active')
     menuLinks.classList.toggle('active')
+    lightBox.classList.toggle('visibleBox')
 })
 
 
