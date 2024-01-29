@@ -284,7 +284,6 @@
     gap:6rem;
     top: 11rem;
     width: 100%;
-    overflow-x: hidden;
 }
 
 .images_container{
@@ -479,6 +478,7 @@
         width: 100%;
         top: 1.5rem;
         flex-direction: column;
+        overflow-x: hidden;
         gap: 0;
     }
 
