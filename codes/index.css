@@ -284,6 +284,7 @@
     gap:6rem;
     top: 11rem;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .images_container{
