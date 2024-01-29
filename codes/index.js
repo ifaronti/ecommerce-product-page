@@ -64,7 +64,7 @@ closeBoxBtn.onclick = () => {
     imgButtons.style.display = 'none'
     closeBoxBtn.style.display = 'none'
 }
-// ******************  carting variables ********************
+// ******************  cart variables ********************
 let plusBtn = document.querySelector(".plus_btn")
 let minusBtn = document.querySelector(".minus_btn")
 let add2Cart = document.querySelector(".addcart")
@@ -95,7 +95,6 @@ menu.addEventListener('click', function(){
     menuLinks.classList.toggle('active')
     lightBox.classList.toggle('visibleBox')
 })
-
 
 // ************************************ cart functions ************************************
 
