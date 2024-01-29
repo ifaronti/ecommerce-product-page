@@ -478,7 +478,7 @@
         width: 100%;
         top: 1.5rem;
         flex-direction: column;
-        overflow-x: hidden;
+        overflow-x: auto;
         gap: 0;
     }
 
